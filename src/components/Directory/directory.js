@@ -1,6 +1,6 @@
 import React from "react";
 import "./directory.scss";
-import { MenuItem } from "../MenuItem/menu-item";
+import MenuItem from "../MenuItem/menu-item";
 
 class Directory extends React.Component {
   state = {
@@ -24,13 +24,13 @@ class Directory extends React.Component {
         title: "Womens",
         imageUrl:
           "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80",
-        large: true,
+        isLarge: true,
       },
       {
         title: "Mens",
         imageUrl:
           "https://images.unsplash.com/photo-1505632958218-4f23394784a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-        large: true,
+        isLarge: true,
       },
     ],
   };
@@ -38,15 +38,8 @@ class Directory extends React.Component {
   render() {
     return (
       <div className="directory">
-        {this.state.items.map((item) => {
-          return (
-            <MenuItem
-              imageUrl={item.imageUrl}
-              key={item.title}
-              title={item.title}
-              isLarge={item.large}
-            />
-          );
+        {this.state.items.map(({ title, ...otherProps }) => {
+          return <MenuItem key={title} title={title} {...otherProps} />;
         })}
       </div>
     );

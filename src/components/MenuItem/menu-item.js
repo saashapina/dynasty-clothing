@@ -1,12 +1,14 @@
 import "./menu-item.scss";
+import { withRouter } from "react-router-dom";
 
-export const MenuItem = ({ title, imageUrl, isLarge }) => {
+const MenuItem = ({ title, imageUrl, isLarge, history, match }) => {
   return (
     <div
       className="menu-item"
       style={{
         height: `${isLarge ? "380px" : ""}`,
       }}
+      onClick={() => history.push(`${match.url}${title.toLowerCase()}`)}
     >
       <div
         className="background-image"
@@ -21,3 +23,5 @@ export const MenuItem = ({ title, imageUrl, isLarge }) => {
     </div>
   );
 };
+
+export default withRouter(MenuItem);
