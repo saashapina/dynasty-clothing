@@ -1,10 +1,10 @@
-import "./menu-item.scss";
+import "./style.scss";
 import { withRouter } from "react-router-dom";
 
 const MenuItem = ({ title, imageUrl, isLarge, history, match }) => {
   return (
     <div
-      className="menu-item"
+      className="menu_item"
       style={{
         height: `${isLarge ? "380px" : ""}`,
       }}

@@ -1,5 +1,5 @@
-import "./home.scss";
-import Directory from "../../components/Directory/directory";
+import "./style.scss";
+import Directory from "../../components/Directory";
 
 export const Home = () => {
   return (
