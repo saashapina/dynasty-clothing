@@ -14,8 +14,7 @@ class Shop extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>This is shop</h1>
+      <div className="shop">
         {this.state.collections.map(({ id, ...otherCollectionProps }) => (
           <CollectionPreview key={id} {...otherCollectionProps} />
         ))}
@@ -24,4 +23,4 @@ class Shop extends React.Component {
   }
 }
 
-export default Shop;
+export { Shop };

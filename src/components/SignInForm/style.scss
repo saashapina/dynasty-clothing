@@ -1,0 +1,14 @@
+.sign_in_form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .sign_in-title {
+    margin: 10px 0;
+  }
+
+  .sign_in_form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
