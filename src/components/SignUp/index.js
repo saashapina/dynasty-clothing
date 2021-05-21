@@ -14,6 +14,7 @@ class SignUp extends React.Component {
       email: "",
       password: "",
       confirmPassword: "",
+      error: null,
     };
   }
 
@@ -49,7 +50,8 @@ class SignUp extends React.Component {
         confirmPassword: "",
       });
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
+      this.setState({ error: error.message });
     }
   };
 
@@ -94,6 +96,9 @@ class SignUp extends React.Component {
             value={confirmPassword}
           />
 
+          {this.state.error ? (
+            <div className="sign_up-error">{this.state.error}</div>
+          ) : null}
           <CustomButton type="submit">Sign Up</CustomButton>
         </form>
       </div>

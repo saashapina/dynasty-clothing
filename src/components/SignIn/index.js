@@ -3,7 +3,7 @@ import React from "react";
 import { FormInput } from "../FormInput";
 import { CustomButton } from "../CustomButton";
 
-import { signInWithGoogle } from "../../firebase/utils";
+import { auth, signInWithGoogle } from "../../firebase/utils";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class SignIn extends React.Component {
       email: "",
       password: "",
       isInputAutoCompleted: false,
+      error: null,
     };
   }
 
@@ -25,9 +26,17 @@ class SignIn extends React.Component {
     }
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({ email: "", password: "", isInputAutoCompleted: false });
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "", isInputAutoCompleted: false });
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: error.message });
+    }
   };
 
   handleChange = (event) => {
@@ -63,6 +72,9 @@ class SignIn extends React.Component {
             isInputAutoCompleted={this.state.isInputAutoCompleted}
           />
 
+          {this.state.error ? (
+            <div className="sign_in-error">{this.state.error}</div>
+          ) : null}
           <div className="sign_in-buttons">
             <CustomButton type="submit">sign in</CustomButton>
             <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
