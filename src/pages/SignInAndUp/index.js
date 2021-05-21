@@ -1,10 +1,12 @@
 import "./styles.scss";
-import { SignInForm } from "../../components/SignInForm";
+import { SignIn } from "../../components/SignIn";
+import { SignUp } from "../../components/SignUp";
 
 export const SignInAndUp = () => {
   return (
     <div className="sign_in_and_up">
-      <SignInForm />
+      <SignIn />
+      <SignUp />
     </div>
   );
 };

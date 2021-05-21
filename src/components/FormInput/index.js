@@ -19,7 +19,7 @@ export const FormInput = ({
             otherInputProps.value.length || isInputAutoCompleted ? "shrink" : ""
           } form-input-label`}
         >
-          {label}
+          {label.charAt(0).toUpperCase() + label.slice(1)}
         </label>
       ) : null}
     </div>

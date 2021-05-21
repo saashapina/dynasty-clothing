@@ -1,4 +1,4 @@
-.sign_in_form {
+.sign_in {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
     margin: 10px 0;
   }
 
-  .sign_in_form-buttons {
+  .sign_in-buttons {
     display: flex;
     justify-content: space-between;
   }

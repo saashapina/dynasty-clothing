@@ -5,7 +5,7 @@ import { CustomButton } from "../CustomButton";
 
 import { signInWithGoogle } from "../../firebase/utils";
 
-class SignInForm extends React.Component {
+class SignIn extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,6 +18,7 @@ class SignInForm extends React.Component {
 
   componentDidMount() {
     //checks for autocompleted background
+    //fixes autofill bug: if text is autofilled by browser floating label style isnt applied
     let emailStyle = window.getComputedStyle(document.getElementById("email"));
     if (emailStyle && emailStyle.backgroundColor !== "white") {
       this.setState({ isInputAutoCompleted: true });
@@ -36,7 +37,7 @@ class SignInForm extends React.Component {
 
   render() {
     return (
-      <div className="sign_in_form">
+      <div className="sign_in">
         <h2 className="sign_in-title">I already have an account</h2>
         <p>Sign in with your email and password.</p>
 
@@ -62,7 +63,7 @@ class SignInForm extends React.Component {
             isInputAutoCompleted={this.state.isInputAutoCompleted}
           />
 
-          <div className="sign_in_form-buttons">
+          <div className="sign_in-buttons">
             <CustomButton type="submit">sign in</CustomButton>
             <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
               sign in with google
@@ -74,4 +75,4 @@ class SignInForm extends React.Component {
   }
 }
 
-export { SignInForm };
+export { SignIn };
