@@ -75,9 +75,14 @@ class SignIn extends React.Component {
           {this.state.error ? (
             <div className="sign_in-error">{this.state.error}</div>
           ) : null}
+
           <div className="sign_in-buttons">
             <CustomButton type="submit">sign in</CustomButton>
-            <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+            <CustomButton
+              isGoogleSignIn
+              onClick={signInWithGoogle}
+              type="button"
+            >
               sign in with google
             </CustomButton>
           </div>
