@@ -1,14 +1,20 @@
 import "./styles.scss";
+
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import CartIcon from "../CartIcon";
+import { CartDropdown } from "../CartDropdown";
+import { If } from "../If";
+
 import { auth } from "../../firebase/utils";
 import { connect } from "react-redux";
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  cartHidden: hidden,
 });
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, cartHidden }) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -21,16 +27,23 @@ const Header = ({ currentUser }) => {
         <Link className="nav-item" to="/contact">
           Contact
         </Link>
-        {currentUser ? (
+        <If
+          condition={currentUser}
+          otherwise={
+            <Link className="nav-item" to="/sign-in">
+              Sign In
+            </Link>
+          }
+        >
           <div className="nav-item" onClick={() => auth.signOut()}>
             Sign Out
           </div>
-        ) : (
-          <Link className="nav-item" to="/sign-in">
-            Sign In
-          </Link>
-        )}
+        </If>
+        <CartIcon />
       </div>
+      <If condition={!cartHidden}>
+        <CartDropdown />
+      </If>
     </div>
   );
 };
