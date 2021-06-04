@@ -1,22 +1,26 @@
-import React from "react";
 import "./App.css";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+
 import Header from "./components/Header";
+
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
 import { SignInAndUp } from "./pages/SignInAndUp";
+import { Checkout } from "./pages/Checkout";
 
 import { auth, createUserProfileDocument } from "./firebase/utils";
 
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/actions";
+import { selectCurrentUser } from "./redux/user/selectors";
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
 });
 
 class App extends React.Component {
@@ -55,8 +59,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/shop" component={Shop} />
+          <Route path="/checkout" component={Checkout} />
           <Route
-            exact
             path="/sign-in"
             render={() =>
               this.props.currentUser ? <Redirect to="/" /> : <SignInAndUp />

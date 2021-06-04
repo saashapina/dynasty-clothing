@@ -11,6 +11,20 @@
   right: 55px;
   z-index: 5;
 
+  .cart_dropdown-empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    font-size: 18px;
+
+    .cart_dropdown-empty-svg {
+      height: 50px;
+      margin: 25px;
+    }
+  }
+
   .cart_dropdown-items {
     height: 240px;
     display: flex;

@@ -1,4 +1,4 @@
-import "./style.scss";
+import "./styles.scss";
 
 export const CartItem = ({ imageUrl, price, name, quantity }) => {
   return (

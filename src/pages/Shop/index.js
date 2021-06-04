@@ -1,4 +1,4 @@
-import "./style.scss";
+import "./styles.scss";
 import React from "react";
 import { SHOP_DATA } from "./data.js";
 import { CollectionPreview } from "../../components/CollectionPreview";
