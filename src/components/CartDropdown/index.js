@@ -14,11 +14,7 @@ const mapStateToProps = (state) => ({
   cartItems: selectCartItems(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden),
-});
-
-const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
+const CartDropdown = ({ cartItems, history, dispatch }) => {
   return (
     <div className="cart_dropdown">
       <If
@@ -39,6 +35,7 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
       <CustomButton
         onClick={() => {
           history.push("/checkout");
+          dispatch(toggleCartHidden());
         }}
       >
         Go To CheckOut
@@ -47,6 +44,4 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
   );
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CartDropdown)
-);
+export default withRouter(connect(mapStateToProps)(CartDropdown));
