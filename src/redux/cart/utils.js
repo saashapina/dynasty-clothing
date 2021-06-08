@@ -3,8 +3,6 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     (item) => item.id === cartItemToAdd.id
   );
 
-  //if cartItemToAdd already exists, return cart items array with an increase of quantity
-  //on the item
   if (existingCartItem) {
     return cartItems.map((item) =>
       item.id === cartItemToAdd.id
@@ -13,13 +11,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     );
   }
 
-  //else return cart items, with addition cart item while initiating quantity of 1
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
-};
-
-export const removeCartItem = (cartItems, cartItemToRemove) => {
-  console.log("this is remove func");
-  return cartItems.filter((item) => item.id !== cartItemToRemove.id);
 };
 
 export const decreaseCartItemQuantity = (cartItems, cartItemToDecrease) => {
@@ -30,4 +22,8 @@ export const decreaseCartItemQuantity = (cartItems, cartItemToDecrease) => {
         : item
     )
     .filter((item) => item.quantity >= 1);
+};
+
+export const removeCartItem = (cartItems, cartItemToRemove) => {
+  return cartItems.filter((item) => item.id !== cartItemToRemove.id);
 };

@@ -20,15 +20,15 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload),
       };
-    case cartActionTypes.REMOVE_ITEM:
-      return {
-        ...state,
-        cartItems: removeCartItem(state.cartItems, action.payload),
-      };
     case cartActionTypes.DECREASE_ITEM_QUANTITY:
       return {
         ...state,
         cartItems: decreaseCartItemQuantity(state.cartItems, action.payload),
+      };
+    case cartActionTypes.REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: removeCartItem(state.cartItems, action.payload),
       };
     default:
       return state;
