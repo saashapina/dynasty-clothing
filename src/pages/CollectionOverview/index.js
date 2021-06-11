@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CollectionPreview } from "../CollectionPreview";
+import { CollectionPreview } from "../../components/CollectionPreview";
 
 import { connect } from "react-redux";
 import { selectCollectionsForPreview } from "../../redux/shop/selector";

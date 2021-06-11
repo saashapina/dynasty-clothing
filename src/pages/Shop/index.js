@@ -2,7 +2,7 @@ import "./styles.scss";
 import React from "react";
 import { Route } from "react-router-dom";
 
-import CollectionOverview from "../../components/CollectionOverview";
+import CollectionOverview from "../CollectionOverview";
 import Collection from "../Collection";
 
 export const Shop = ({ match }) => {
