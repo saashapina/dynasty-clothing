@@ -1,4 +1,9 @@
-import "./styles.scss";
+import {
+  HeaderContainer,
+  NavContainer,
+  LinkedNavItem,
+  NavItem,
+} from "./styles";
 
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
@@ -20,35 +25,25 @@ const mapStateToProps = createStructuredSelector({
 
 const Header = ({ currentUser, cartHidden }) => {
   return (
-    <div className="header">
-      <Link className="logo-container" to="/">
-        <Logo className="logo" />
+    <HeaderContainer>
+      <Link to="/">
+        <Logo />
       </Link>
-      <div className="nav">
-        <Link className="nav-item" to="/shop">
-          Shop
-        </Link>
-        <Link className="nav-item" to="/contact">
-          Contact
-        </Link>
+      <NavContainer>
+        <LinkedNavItem to="/shop">Shop</LinkedNavItem>
+        <LinkedNavItem to="/contact">Contact</LinkedNavItem>
         <If
           condition={currentUser}
-          otherwise={
-            <Link className="nav-item" to="/sign-in">
-              Sign In
-            </Link>
-          }
+          otherwise={<LinkedNavItem to="/sign-in">Sign In</LinkedNavItem>}
         >
-          <div className="nav-item" onClick={() => auth.signOut()}>
-            Sign Out
-          </div>
+          <NavItem onClick={() => auth.signOut()}>Sign Out</NavItem>
         </If>
         <CartIcon />
-      </div>
+      </NavContainer>
       <If condition={!cartHidden}>
         <CartDropdown />
       </If>
-    </div>
+    </HeaderContainer>
   );
 };
 
