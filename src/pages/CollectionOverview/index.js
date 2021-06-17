@@ -3,10 +3,10 @@ import React from "react";
 import { CollectionPreview } from "../../components/CollectionPreview";
 
 import { connect } from "react-redux";
-import { selectCollectionsForPreview } from "../../redux/shop/selector";
+import { selectCollectionsInArray } from "../../redux/shop/selectors";
 
 const mapStateToProps = (state) => ({
-  collections: selectCollectionsForPreview(state),
+  collections: selectCollectionsInArray(state),
 });
 
 const CollectionOverview = ({ collections }) => {

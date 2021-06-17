@@ -3,7 +3,7 @@ import "./styles.scss";
 import CollectionItem from "../../components/CollectionItem";
 
 import { connect } from "react-redux";
-import { selectCollectionByCategory } from "../../redux/shop/selector";
+import { selectCollectionByCategory } from "../../redux/shop/selectors";
 
 const mapStateToProps = (state, ownProps) => {
   const collectionCategory = ownProps.match.params.collectionId;

@@ -2,7 +2,7 @@ import React from "react";
 import "./style.scss";
 import MenuItem from "../MenuItem";
 import { connect } from "react-redux";
-import { selectDirectoryItems } from "../../redux/directory/selector";
+import { selectDirectoryItems } from "../../redux/directory/selectors";
 
 const mapStateToProps = (state) => ({
   directoryItems: selectDirectoryItems(state),
