@@ -19,3 +19,12 @@ export const selectCollectionByCategory = memoize((categoryName) =>
     collections ? collections[categoryName] : null
   )
 );
+
+export const selectIsCollectionFetching = createSelector(
+  [selectShop],
+  (shop) => shop.isFetchingCollection
+);
+
+export const selectIsCollectionLoaded = createSelector([selectShop], (shop) =>
+  Boolean(shop.collections)
+);
