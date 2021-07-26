@@ -4,6 +4,7 @@ import { shopActionTypes } from "./actionTypes";
 //   convertCollectionsSnapshotToMap,
 // } from "../../firebase/utils";
 
+//used in sagas
 export const fetchCollectionsStart = () => ({
   type: shopActionTypes.FETCH_COLLECTIONS_START,
 });
